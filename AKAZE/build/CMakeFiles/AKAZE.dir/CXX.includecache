@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/buddyrobot/Work/git/RecognizeAlgo/AKAZE/main.cpp
+opencv2/videoio.hpp
+-
+iostream
+-
+tracker.h
+/home/buddyrobot/Work/git/RecognizeAlgo/AKAZE/tracker.h
+
+/home/buddyrobot/Work/git/RecognizeAlgo/AKAZE/stats.h
+
+/home/buddyrobot/Work/git/RecognizeAlgo/AKAZE/tracker.h
+opencv2/features2d.hpp
+-
+utils.h
+/home/buddyrobot/Work/git/RecognizeAlgo/AKAZE/utils.h
+
+/home/buddyrobot/Work/git/RecognizeAlgo/AKAZE/utils.h
+opencv2/opencv.hpp
+-
+vector
+-
+iomanip
+-
+stats.h
+/home/buddyrobot/Work/git/RecognizeAlgo/AKAZE/stats.h
+
