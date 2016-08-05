@@ -1,0 +1,12 @@
+AKAZE feature matching algorithm
+by Philip Zeratul
+
+Usage:
+./AKAZE templ_DIR bounding_box_DIR
+
+e.g.
+./AKAZE battery.png bb.xml
+
+Warning:
+Don't use .jpg file as the template!
+Because OpenCV has a bug when using .jpg and video camera at the same time.
