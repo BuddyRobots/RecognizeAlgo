@@ -106,13 +106,27 @@ public class getImage : MonoBehaviour
             List<Point> points = new List<Point>();
             List<List<Point>> listLine = new List<List<Point>>();
 
-            for (var i = 0; i < l_roi.Count; i++)
+
+
+            Debug.Log("=============Start=============");
+
+
+            //for (var i = 0; i < l_roi.Count; i++)
             {
-                listLine = lineDetector.vectorize(l_roi[i], ref temp);
+                listLine = lineDetector.vectorize(l_roi[0], ref temp);
 
                 resultImg = util.drawPoint(temp, listLine);
 
                 //resultImg = temp.clone();
+                for(var j = 0; j < listLine.Count; j++)
+                {
+                    Debug.Log("(" +listLine[j][0].x + ", " + listLine[j][0].y + ") (" + listLine[j][listLine[j].Count-1].x + ", " + listLine[j][listLine[j].Count-1].y + ")");
+                }
+
+
+
+
+
 
                 
 
