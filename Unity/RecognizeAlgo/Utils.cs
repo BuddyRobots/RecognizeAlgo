@@ -122,6 +122,73 @@ namespace MagicCircuit
         public List<Vector3> list { get; set; } //图标的坐标
         public double theta;                    //图标的朝向（单位：角度）
         public int showOrder;                   //显示顺序 从0开始（图标的显示顺序是灯泡）
+        public bool powered;                    //元件是否通电
+
+        private double x_shift = 360;           //Parameters for changing cordinates
+        private double y_shift = 640;
+
+        public CircuitItem(int _id, string _name, ItemType _type, List<Point> _list, double _theta, int _order, bool _p = false)
+        {
+            ID = _id;
+            name = _name;
+            type = _type;
+            list = points2vector3(_list);
+            theta = _theta;
+            showOrder = _order;
+            powered = _p;
+        }
+
+        // @Override
+        public CircuitItem(int _id, string _name, ItemType _type, int _order, bool _p = false)
+        {
+            ID = _id;
+            name = _name;
+            type = _type;
+            showOrder = _order;
+            powered = _p;
+            list = new List<Vector3>();
+            theta = 0;
+        }
+
+        private List<Vector3> points2vector3(List<Point> src)
+        {
+            List<Vector3> res = new List<Vector3>();
+            for (var i = 0; i < src.Count; i++)
+            {
+                res.Add(cordinateMat2Tex(src[i].x, src[i].y));
+            }
+            return res;
+        }
+
+        public void extractCard(List<Point> bb, OpenCVForUnity.Rect rect)
+        {
+            Point center = new Point((rect.tl().x + rect.br().x) / 2, (rect.tl().y + rect.br().y) / 2);
+
+            double _x = (bb[3].x - bb[0].x) / 2;
+            double _y = (bb[3].y - bb[0].y) / 2;
+
+            Point right = new Point((center.x + _x), (center.y + _y));
+
+            theta = Mathf.Atan2((float)(right.y - center.y), (float)(right.x - center.x));
+            theta = theta * 180.0 / Mathf.PI;
+
+            list.Add(cordinateMat2Tex(center.x, center.y));
+        }
+
+        public void extractLine(List<Point> line, OpenCVForUnity.Rect rect)
+        {
+            Point center = new Point(rect.tl().x, rect.tl().y);
+
+            for (var i = 0; i < line.Count; i++)
+            {
+                list.Add(cordinateMat2Tex((line[i].x + center.x), (line[i].y + center.y)));
+            }
+        }        
+
+        private Vector3 cordinateMat2Tex(double x, double y)
+        {            
+            return new Vector3((float)(x - x_shift), (float)(y_shift - y));
+        }
     }
 }
  

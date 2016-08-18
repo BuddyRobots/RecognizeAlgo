@@ -316,7 +316,6 @@ namespace MagicCircuit
         /// 
         private void mergeLine(ref List<List<Point>> listLine)
         {
-            Debug.Log("mergeLine");
             List<Point> start = new List<Point>();
             List<Point> end = new List<Point>();
 
@@ -347,7 +346,10 @@ namespace MagicCircuit
                 {
                     // merge start_idx and end_idx
                     listLine[end_idx].AddRange(listLine[start_idx]);
+
                     listLine.RemoveAt(start_idx);
+                    start.RemoveAt(start_idx);
+                    end.RemoveAt(end_idx);
                 }
             }
         }

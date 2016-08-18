@@ -180,6 +180,6 @@ namespace MagicCircuit
             v_min = PlayerPrefs.GetInt(component + "_v_min");
             v_max = PlayerPrefs.GetInt(component + "_v_max");
             area = PlayerPrefs.GetInt(component + "_area");
-        }
+        }        
     }
 }
